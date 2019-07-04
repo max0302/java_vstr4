@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Java Script Intro</title>
+</head>
+<body>
+	<script>
+		function l() {
+			for(let item of arguments) {
+				console.log(item);
+			}
+		}
+		// Создание обьектов
+		//1
+		let user = new Object();
+		user.weight = 70;
+		//2
+		let user2 = {};
+		// Свойства обьектов
+		user.name = 'Biba';
+		user.age = 34;
+		// Блок инициализации
+		let boba = {
+			weight: 70,
+			name: 'Boba',
+			age: 35,
+			'date of birth': '24',
+		};
+
+		l(boba['data of birth']);
+		//Сокрощеный способ инициализации
+		let name = 'Two';
+		let age = 55;
+		let weight = 80;
+		let dol = {name, age, weight};
+		//Методы обьектов
+		boba.display = function(){
+			l(boba.name, boba.age);
+		}
+
+		function display(weight) {
+			l('Hello, i am ' + (this.weight - weight));
+		}
+
+		user.display = display;
+		dol.display = display;
+		boba.display = display;
+
+
+		user.display(15);
+		dol.display(20);
+		boba.display(50);
+
+		l(boba['name']);
+		boba.display();
+
+		l(boba);
+		delete boba.weight;
+		l(boba);
+
+		if ('weight' in boba) {
+			l('свойства существует');
+		} else {
+			l('свойства не существует');
+		}
+
+		if (boba.hasOwnProperty('age')) {
+			l('свойства существует');
+		} else {
+			l('свойства не существует');
+		}
+
+	</script>
+</body>
+</html>
